@@ -4,6 +4,7 @@ from typing import Literal
 from .board import Board
 from .position import Position
 
+
 class Piece(ABC):
     def __init__(self, color: Literal['White', 'Black'], position: Position):
         self.color = color

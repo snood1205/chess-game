@@ -5,6 +5,14 @@ type Row = Literal[1, 2, 3, 4, 5, 6, 7, 8]
 
 
 class Position:
+    """
+    Defines a position on the chess board.
+
+    Attributes:
+        _row (Row): The row (1-8) that the piece is on
+        _column (Column): The column (a-h) that the piece is on
+    """
+
     _COLUMN_ORD_OFFSET: Final = ord('a')
 
     def __init__(self, row: Row, column: Column):
@@ -14,6 +22,9 @@ class Position:
     @property
     def row(self) -> Row:
         return self._row
+
+    def __str__(self) -> str:
+        return f'{self._column}{self._row}'
 
     def _numeric_column(self):
         return ord(self._column) - self._COLUMN_ORD_OFFSET
