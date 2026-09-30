@@ -2,7 +2,7 @@ from typing import Literal
 
 from .board import Board
 from .exceptions import PromotionError
-from .pawn import Pawn
+from chess_game.pieces.pawn import Pawn
 from .position import Position
 
 # In standard algebraic notation, this represents kNight, Bishop, Rook, and Queen respectively.

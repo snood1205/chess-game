@@ -1,6 +1,6 @@
-from .board import Board
-from .piece import Piece
-from .position import Position
+from chess_game.board import Board
+from chess_game.piece import Piece
+from chess_game.position import Position
 
 
 class Pawn(Piece):
