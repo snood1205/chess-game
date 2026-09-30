@@ -26,6 +26,11 @@ class Position:
     def __str__(self) -> str:
         return f'{self._column}{self._row}'
 
+    def as_indices(self) -> tuple[int, int]:
+        row_index = 8 - self._row
+        col_index = self._numeric_column()
+        return row_index, col_index
+
     def _numeric_column(self):
         return ord(self._column) - self._COLUMN_ORD_OFFSET
 

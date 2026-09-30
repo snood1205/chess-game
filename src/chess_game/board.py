@@ -15,10 +15,11 @@ class Board:
         self._create_normal_chessboard()
 
     def position_free(self, position: Position) -> bool:
-        pass
+        return self.piece_at(position) is None
 
-    def piece_at(self, position: Position) -> Piece:
-        pass
+    def piece_at(self, position: Position) -> Piece | None:
+        row, column = position.as_indices()
+        return self._board[row][column]
 
     def _create_normal_chessboard(self):
         self._board = [[None] * 8 for _ in range(8)]
