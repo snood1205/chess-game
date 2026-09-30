@@ -23,6 +23,14 @@ class Position:
     def row(self) -> Row:
         return self._row
 
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Position):
+            return False
+        return self._row == other._row and self._column == other._column
+
+    def __hash__(self) -> int:
+        return hash((self._row, self._column))
+
     def __str__(self) -> str:
         return f'{self._column}{self._row}'
 
@@ -31,12 +39,12 @@ class Position:
         col_index = self._numeric_column()
         return row_index, col_index
 
-    def _numeric_column(self):
-        return ord(self._column) - self._COLUMN_ORD_OFFSET
-
     def is_same_row(self, other: Position) -> bool:
         return self._row == other._row
 
     def check_column_difference(self, other: Position, allowable_difference: int) -> bool:
         difference = abs(self._numeric_column() - other._numeric_column())
         return difference <= allowable_difference
+
+    def _numeric_column(self):
+        return ord(self._column) - self._COLUMN_ORD_OFFSET
