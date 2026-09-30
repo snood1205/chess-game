@@ -1,6 +1,10 @@
-from chess_game.board import Board
-from chess_game.piece import Piece
-from chess_game.position import Position
+from typing import TYPE_CHECKING
+
+from ..piece import Piece
+from ..position import Position
+
+if TYPE_CHECKING:
+    from ..board import Board
 
 
 class Pawn(Piece):
@@ -27,5 +31,5 @@ class Pawn(Piece):
 
     def _at_initial_position(self) -> bool:
         return (self.color == 'White' and self.position.row == 2) or (
-            self.color == 'Black' and self.position.row == 7
+                self.color == 'Black' and self.position.row == 7
         )
