@@ -11,6 +11,9 @@ from .pieces.rook import Rook
 
 
 class Board:
+    _BACK_RANK_ORDER = (Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook)
+    _COLUMNS = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h')
+
     def __init__(self):
         self._create_normal_chessboard()
 
@@ -31,25 +34,11 @@ class Board:
     @staticmethod
     def _create_back_rank(empty_row: list[Piece | None], color: Literal['White', 'Black']):
         row = 8 if color == 'Black' else 1
-
-        empty_row[0] = Rook(color, position=Position(row, column='a'))
-        empty_row[1] = Knight(color, position=Position(row, column='b'))
-        empty_row[2] = Bishop(color, position=Position(row, column='c'))
-        empty_row[3] = Queen(color, position=Position(row, column='d'))
-        empty_row[4] = King(color, position=Position(row, column='e'))
-        empty_row[5] = Bishop(color, position=Position(row, column='f'))
-        empty_row[6] = Knight(color, position=Position(row, column='g'))
-        empty_row[7] = Rook(color, position=Position(row, column='h'))
+        for index, (piece_class, column) in enumerate(zip(Board._BACK_RANK_ORDER, Board._COLUMNS)):
+            empty_row[index] = piece_class(color, position=Position(row, column))
 
     @staticmethod
     def _create_pawn_rank(empty_row: list[Piece | None], color: Literal['White', 'Black']):
         row = 7 if color == 'Black' else 2
-
-        empty_row[0] = Pawn(color, position=Position(row, column='a'))
-        empty_row[1] = Pawn(color, position=Position(row, column='b'))
-        empty_row[2] = Pawn(color, position=Position(row, column='c'))
-        empty_row[3] = Pawn(color, position=Position(row, column='d'))
-        empty_row[4] = Pawn(color, position=Position(row, column='e'))
-        empty_row[5] = Pawn(color, position=Position(row, column='f'))
-        empty_row[6] = Pawn(color, position=Position(row, column='g'))
-        empty_row[7] = Pawn(color, position=Position(row, column='h'))
+        for index, column in enumerate(Board._COLUMNS):
+            empty_row[index] = Pawn(color, position=Position(row, column))

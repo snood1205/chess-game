@@ -31,5 +31,5 @@ class Pawn(Piece):
 
     def _at_initial_position(self) -> bool:
         return (self.color == 'White' and self.position.row == 2) or (
-                self.color == 'Black' and self.position.row == 7
+            self.color == 'Black' and self.position.row == 7
         )
