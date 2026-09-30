@@ -1,8 +1,10 @@
 from abc import ABC, abstractmethod
-from typing import Literal
+from typing import Literal, TYPE_CHECKING
 
-from .board import Board
 from .position import Position
+
+if TYPE_CHECKING:
+    from .board import Board
 
 
 class Piece(ABC):

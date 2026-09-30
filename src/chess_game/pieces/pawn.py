@@ -1,6 +1,10 @@
-from .board import Board
-from .piece import Piece
-from .position import Position
+from typing import TYPE_CHECKING
+
+from ..piece import Piece
+from ..position import Position
+
+if TYPE_CHECKING:
+    from ..board import Board
 
 
 class Pawn(Piece):
